@@ -6,7 +6,7 @@ export default class Cursos extends Component {
     super(props);
     this.listarCursos = this.listarCursos.bind(this);
     this.limpiarCursos = this.limpiarCursos.bind(this);
-    this.listarPorApellido = this.listarPorApellido.bind(this);
+    //this.listarPorApellido = this.listarPorApellido.bind(apellido, this);
     this.limpiar = this.limpiar.bind(this);
     this.state = {
         estudiantes: [],
@@ -31,8 +31,8 @@ export default class Cursos extends Component {
     });
   }
 
-  listarPorApellido () {
-    fetch("http://localhost:1234/estudiantes?apellido=Martinez")
+  listarPorApellido (apellido) {
+    fetch("http://localhost:1234/estudiantes?apellido=" + apellido)
     .then((resp) => resp.json())
     .then((json) => {
         this.setState({
@@ -68,7 +68,7 @@ export default class Cursos extends Component {
             </tbody>
         </table>
 
-        <button onClick={this.listarPorApellido}>Listar los cursos del estudiante X</button>
+        <button onClick={this.listarPorApellido.bind(this, "Martinez")}>Listar los cursos del estudiante X</button>
         <button onClick={this.limpiar}>Limpiar</button>
         <table>
             <thead>
@@ -80,11 +80,13 @@ export default class Cursos extends Component {
             </thead>
             <tbody>
               {this.state.estudiantes.map((e, index) => (
+                e.cursos.map((c, index) => (
                   <tr>
                       <td>{e.nombre}</td>
                       <td>{e.apellido}</td>
-                      <td>{e.cursos && e.cursos[0].nombre}</td>
+                      <td>{c.nombre}</td>
                   </tr>
+                ))
               ))}
             </tbody>
         </table>
