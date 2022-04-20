@@ -1,0 +1,24 @@
+.estilo {
+    background-color: lightgray;
+    border-radius: 5px;
+    margin: 16px;
+    padding: 16px;
+    margin-left: 20%;
+    margin-right: 20%;
+    box-shadow: 0 2px 5px 0 #ccc;
+}
+
+.table {
+    background-color: lightgray;
+    border-radius: 5px;
+    margin: 16px;
+    padding: 16px;
+    margin-left: 20%;
+    margin-right: 20%;
+    box-shadow: 0 2px 5px 0 #ccc;   
+}
+
+.button {
+    margin-left: 20%;
+    margin-right: 20%;
+}
